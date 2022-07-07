@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const Axios = require("axios");
 var request = require("request");
+require("dotenv").config();
 const app = express();
 const PORT = 8000;
 
@@ -46,9 +47,8 @@ app.post("/runner", (req, res) => {
   let language = req.body.language;
   let input = req.body.input;
   console.log(language);
-  let clientId = "26cae8ed2e266343a40195392c1c97d1";
-  let clientSecret =
-    "2ad3fb72e46263c0bf052de7b7f13851b1ffa3b464f758fccadb93e7d3d8f79f";
+  let clientId = process.env.API_CLIENTID;
+  let clientSecret = process.env.API_CLIENTSECRET;
   var program = {
     script: req.body.code,
     language: req.body.language,
@@ -76,7 +76,7 @@ app.post("/runner", (req, res) => {
   //   });
   request(
     {
-      url: "https://api.jdoodle.com/v1/execute",
+      url: process.env.API_URI,
       method: "POST",
       json: program,
     },
