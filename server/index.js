@@ -57,23 +57,6 @@ app.post("/runner", (req, res) => {
     clientId,
     clientSecret,
   };
-  // let config = {
-  //   method: "post",
-  //   url: "https://api.jdoodle.com/v1/execute",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   data: program,
-  // };
-  // //calling the code compilation API
-  // Axios(config)
-  //   .then((response) => {
-  //     res.send(response.data);
-  //     console.log(response.data);
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
   request(
     {
       url: process.env.API_URI,
